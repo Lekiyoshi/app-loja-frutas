@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Produtos</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+        crossorigin="anonymous">
+</head>
+
+<body>
+  <h1>Lista de Produtos</h1>
+  
+  <div class="form-control">
+    <a href="/cadastroProduto" class="btn btn-info">Novo Produto</a>
+  </div>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Empresa</th>
+        <th>Fornecedor</th>
+        <th>Descr. do Produto</th>
+        <th>Unidade (métrica)</th>
+        <th>Quantidade</th>
+        <th>Preço</th>
+        <th>Opções</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="prd : ${listaProdutos}">
+        <td th:text="${prd.id}"></td>
+        <td th:text="${prd.empresaId.nome}"></td>
+        <td th:text="${prd.fornecedorId.nome}"></td>
+        <td th:text="${prd.nome}"></td>
+        <td th:text="${prd.unidade}"></td>
+        <td th:text="${prd.quantidade}"></td>
+        <td th:text="${prd.preco}"></td>
+        <td>
+          <a th:href="@{/alterarProduto/{id}(id=${prd.id})}" class="btn btn-info">Alterar</a>
+          <a th:href="@{/deletarProduto/{id}(id=${prd.id})}" class="btn btn-danger">Deletar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+          crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Vendas</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+        crossorigin="anonymous">
+</head>
+
+<body>
+  <h1>Lista de Vendas</h1>
+  
+  <div class="form-control">
+    <a href="/cadastroVenda" class="btn btn-info">Nova Venda</a>
+  </div>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Cliente</th>
+        <th>Produto</th>
+        <th>Quantidade</th>
+        <th>Valor Unitário</th>
+        <th>Forma de Pagamento</th>
+        <th>Data da Venda</th>
+        <th>Opções</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="vnd : ${listaVendas}">
+        <td th:text="${vnd.id}"></td>
+        <td th:text="${vnd.clienteId.nome}"></td>
+        <td th:text="${vnd.produtoId.nome}"></td>
+        <td th:text="${vnd.quantidade}"></td>
+        <td th:text="${vnd.valorUnitario}"></td>
+        <td th:text="${vnd.formaPagamento}"></td>
+        <td th:text="${#dates.format(vnd.dataVenda, 'dd/MM/yyyy')}"></td>
+        <td>
+          <a th:href="@{/deletarVenda/{id}(id=${vnd.id})}" class="btn btn-danger">Deletar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+          crossorigin="anonymous"></script>
+</body>
+
+</html>

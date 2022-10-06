@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Clientes</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+        crossorigin="anonymous">
+</head>
+
+<body>
+  <h1>Lista de Clientes</h1>
+  
+  <div class="form-control">
+    <a href="/cadastroCliente" class="btn btn-info">Novo Cliente (Pessoa Física)</a>
+    <a href="/cadastroCliente" class="btn btn-info">Novo Cliente (Pessoa Jurídica)</a>
+  </div>
+  
+  <h3>Clientes (Pessoa Física)</h3>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Nome</th>
+        <th>Rg</th>
+        <th>Cpf</th>
+        <th>Data de Nascimento</th>
+        <th>Contato</th>
+        <th>Opções</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="clpf : ${listaClientesPessoaFisica}">
+        <td th:text="${clpf.clienteId.id}"></td>
+        <td th:text="${clpf.clienteId.nome}"></td>
+        <td th:text="${clpf.rg}"></td>
+        <td th:text="${clpf.cpf}"></td>
+        <td th:text="${#dates.format(clpf.dataNascimento, 'dd/MM/yyyy')}"></td>
+        <td th:text="${clpf.clienteId.email}"></td>
+        <td>
+          <a th:href="@{/alterarCliente/{id}(id=${clpf.id})}" class="btn btn-info">Alterar</a>
+          <a th:href="@{/deletarCliente/{id}(id=${clpf.id})}" class="btn btn-danger">Deletar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h3>Clientes (Pessoa Jurídica)</h3>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Nome</th>
+        <th>Cnpj</th>
+        <th>Proprietário</th>
+        <th>Contato</th>
+        <th>Opções</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="clpj : ${listaClientesPessoaJuridica}">
+        <td th:text="${clpj.clienteId.id}"></td>
+        <td th:text="${clpj.clienteId.nome}"></td>
+        <td th:text="${clpj.cnpj}"></td>
+        <td th:text="${clpj.proprietario}"></td>
+        <td th:text="${clpj.clienteId.email}"></td>
+        <td>
+          <a th:href="@{/alterarCliente/{id}(id=${clpj.id})}" class="btn btn-info">Alterar</a>
+          <a th:href="@{/deletarCliente/{id}(id=${clpj.id})}" class="btn btn-danger">Deletar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+          crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,6 +1,6 @@
 package com.example.demo.model;
 
-import java.util.Calendar;
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,19 +9,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "pessoa")
-public class Pessoa {
+@Entity @Table(name = "cliente")
+public class Cliente implements Serializable {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pessoa_id")
+    private static final long serialVersionUID = 1L;
+    
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
-    private String cpf;
-    private String rg;
-    @Column(name = "data_nascimento")
-    private Calendar dataNascimento;
+    private String telefone;
+    private String email;
     private String cep;
     private String logradouro;
     @Column(name = "numero_endereco")
@@ -29,20 +26,14 @@ public class Pessoa {
     private String bairro;
     private String cidade;
     private String uf;
+    @Column(name = "tipo_cliente")
+    private Integer tipoCliente;
     
-    // Constructor
-    public Pessoa(String nome, String cpf, Calendar dataNascimento) {
-        super();
-        this.nome = nome;
-        this.cpf = cpf;
-        this.dataNascimento = dataNascimento;
-    }
-    
-    // Getters and Setters
-    public int getId() {
+    // Getters e Setters
+    public Integer getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public String getNome() {
@@ -51,23 +42,17 @@ public class Pessoa {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public String getCpf() {
-        return cpf;
+    public String getTelefone() {
+        return telefone;
     }
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
-    public String getRg() {
-        return rg;
+    public String getEmail() {
+        return email;
     }
-    public void setRg(String rg) {
-        this.rg = rg;
-    }
-    public Calendar getDataNascimento() {
-        return dataNascimento;
-    }
-    public void setDataNascimento(Calendar dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    public void setEmail(String email) {
+        this.email = email;
     }
     public String getCep() {
         return cep;
@@ -104,6 +89,12 @@ public class Pessoa {
     }
     public void setUf(String uf) {
         this.uf = uf;
+    }
+    public Integer getTipoCliente() {
+        return tipoCliente;
+    }
+    public void setTipoCliente(Integer tipoCliente) {
+        this.tipoCliente = tipoCliente;
     }
     
 }

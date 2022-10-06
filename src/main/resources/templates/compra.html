@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Compras</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+        crossorigin="anonymous">
+</head>
+
+<body>
+  <h1>Lista de Compras</h1>
+  
+  <div class="form-control">
+    <a href="/cadastroCompra" class="btn btn-info">Nova Compra</a>
+  </div>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Fornecedor</th>
+        <th>Produto</th>
+        <th>Quantidade</th>
+        <th>Valor Unitário</th>
+        <th>Forma de Pagamento</th>
+        <th>Data da Compra</th>
+        <th>Opções</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="cmp : ${listaCompras}">
+        <td th:text="${cmp.id}"></td>
+        <td th:text="${cmp.fornecedorId.nome}"></td>
+        <td th:text="${cmp.produtoId.nome}"></td>
+        <td th:text="${cmp.quantidade}"></td>
+        <td th:text="${cmp.valorUnitario}"></td>
+        <td th:text="${cmp.formaPagamento}"></td>
+        <td th:text="${#dates.format(cmp.dataCompra, 'dd/MM/yyyy')}"></td>
+        <td>
+          <a th:href="@{/deletarCompra/{id}(id=${cmp.id})}" class="btn btn-danger">Deletar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+          crossorigin="anonymous"></script>
+</body>
+
+</html>
