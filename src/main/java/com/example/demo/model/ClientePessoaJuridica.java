@@ -28,6 +28,22 @@ public class ClientePessoaJuridica implements Serializable {
     @Column(name = "ramo_atividade")
     private String ramoAtividade;
     
+    // Construtores
+    public ClientePessoaJuridica() {
+        super();
+    }
+    public ClientePessoaJuridica(Integer id, Cliente clienteId, String cnpj, String inscricaoEstadual,
+            String proprietario, String representante, String ramoAtividade) {
+        super();
+        this.id = id;
+        this.clienteId = clienteId;
+        this.cnpj = cnpj;
+        this.inscricaoEstadual = inscricaoEstadual;
+        this.proprietario = proprietario;
+        this.representante = representante;
+        this.ramoAtividade = ramoAtividade;
+    }
+    
     // Getters e Setters
     public Integer getId() {
         return id;

@@ -29,6 +29,26 @@ public class Cliente implements Serializable {
     @Column(name = "tipo_cliente")
     private Integer tipoCliente;
     
+    // Construtores
+    public Cliente() {
+        super();
+    }
+    public Cliente(Integer id, String nome, String telefone, String email, String cep, String logradouro,
+            String numeroEndereco, String bairro, String cidade, String uf, Integer tipoCliente) {
+        super();
+        this.id = id;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.cep = cep;
+        this.logradouro = logradouro;
+        this.numeroEndereco = numeroEndereco;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.uf = uf;
+        this.tipoCliente = tipoCliente;
+    }
+    
     // Getters e Setters
     public Integer getId() {
         return id;

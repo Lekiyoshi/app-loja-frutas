@@ -31,6 +31,19 @@ public class ClientePessoaFisica implements Serializable {
     @Column(name = "data_nascimento") @Temporal(TemporalType.DATE)
     private Calendar dataNascimento;
     
+    // Construtores
+    public ClientePessoaFisica() {
+        super();
+    }
+    public ClientePessoaFisica(Integer id, Cliente clienteId, String rg, String cpf, Calendar dataNascimento) {
+        super();
+        this.id = id;
+        this.clienteId = clienteId;
+        this.rg = rg;
+        this.cpf = cpf;
+        this.dataNascimento = dataNascimento;
+    }
+
     // Getters e Setters
     public Integer getId() {
         return id;
