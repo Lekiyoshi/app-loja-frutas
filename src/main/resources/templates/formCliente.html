@@ -83,7 +83,7 @@
     
     <br />
     
-    <fieldset th:hidden="${inicioTipoCliente eq 1}" th:disabled="${inicioTipoCliente eq 1}">
+    <fieldset id="fieldsetPessoaFisica" th:hidden="${inicioTipoCliente eq 1}" th:disabled="${inicioTipoCliente eq 1}">
       <legend>Dados de Pessoa Física</legend>
       
       <input type="hidden"
@@ -107,7 +107,7 @@
       
     </fieldset>
     
-    <fieldset th:hidden="${inicioTipoCliente eq 0}" th:disabled="${inicioTipoCliente eq 0}">
+    <fieldset id="fieldsetPessoaJuridica" th:hidden="${inicioTipoCliente eq 0}" th:disabled="${inicioTipoCliente eq 0}">
       <legend>Dados de Pessoa Jurídica</legend>
       
       <input type="hidden"
@@ -150,6 +150,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
           crossorigin="anonymous"></script>
+  <script th:src="@{/js/formCliente.js}"></script>
+  
 </body>
 
 </html>
