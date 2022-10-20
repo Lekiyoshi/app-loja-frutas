@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity @Table(name = "produto")
@@ -18,13 +20,17 @@ public class Produto implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne @JoinColumn(name = "empresa_id", referencedColumnName = "id")
-    private Empresa empresaId;
+    private Empresa empresa;
     @ManyToOne @JoinColumn(name = "fornecedor_id", referencedColumnName = "id")
-    private Fornecedor fornecedorId;
+    private Fornecedor fornecedor;
     private String nome;
     private String unidade;
     private Integer quantidade;
     private double preco;
+    @OneToMany(mappedBy = "produto")
+    private Set<Compra> compras;
+    @OneToMany(mappedBy = "produto")
+    private Set<Venda> vendas;
     
     // Getters e Setters
     public Integer getId() {
@@ -33,17 +39,17 @@ public class Produto implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-    public Empresa getEmpresaId() {
-        return empresaId;
+    public Empresa getEmpresa() {
+        return empresa;
     }
-    public void setEmpresaId(Empresa empresaId) {
-        this.empresaId = empresaId;
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
-    public Fornecedor getFornecedorId() {
-        return fornecedorId;
+    public Fornecedor getFornecedor() {
+        return fornecedor;
     }
-    public void setFornecedorId(Fornecedor fornecedorId) {
-        this.fornecedorId = fornecedorId;
+    public void setFornecedor(Fornecedor fornecedor) {
+        this.fornecedor = fornecedor;
     }
     public String getNome() {
         return nome;
@@ -68,6 +74,18 @@ public class Produto implements Serializable {
     }
     public void setPreco(double preco) {
         this.preco = preco;
+    }
+    public Set<Compra> getCompras() {
+        return compras;
+    }
+    public void setCompras(Set<Compra> compras) {
+        this.compras = compras;
+    }
+    public Set<Venda> getVendas() {
+        return vendas;
+    }
+    public void setVendas(Set<Venda> vendas) {
+        this.vendas = vendas;
     }
 
 }

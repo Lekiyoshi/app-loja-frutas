@@ -2,12 +2,14 @@ package com.example.demo.model;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -37,6 +39,10 @@ public class Fornecedor implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "data_informacao") @Temporal(TemporalType.DATE)
     private Calendar dataInformacao;
+    @OneToMany(mappedBy = "fornecedor")
+    private Set<Produto> produtos;
+    @OneToMany(mappedBy = "fornecedor")
+    private Set<Compra> compras;
     
     // Getters e Setters
     public Integer getId() {
@@ -122,6 +128,18 @@ public class Fornecedor implements Serializable {
     }
     public void setDataInformacao(Calendar dataInformacao) {
         this.dataInformacao = dataInformacao;
+    }
+    public Set<Produto> getProdutos() {
+        return produtos;
+    }
+    public void setProdutos(Set<Produto> produtos) {
+        this.produtos = produtos;
+    }
+    public Set<Compra> getCompras() {
+        return compras;
+    }
+    public void setCompras(Set<Compra> compras) {
+        this.compras = compras;
     }
     
 }

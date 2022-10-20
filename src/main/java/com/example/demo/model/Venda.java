@@ -24,9 +24,9 @@ public class Venda implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne @JoinColumn(name = "cliente_id", referencedColumnName = "id")
-    private Cliente clienteId;
+    private Cliente cliente;
     @ManyToOne @JoinColumn(name = "produto_id", referencedColumnName = "id")
-    private Produto produtoId;
+    private Produto produto;
     private Integer quantidade;
     @Column(name = "valor_unitario")
     private double valorUnitario;
@@ -43,17 +43,17 @@ public class Venda implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-    public Cliente getClienteId() {
-        return clienteId;
+    public Cliente getCliente() {
+        return cliente;
     }
-    public void setClienteId(Cliente clienteId) {
-        this.clienteId = clienteId;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
-    public Produto getProdutoId() {
-        return produtoId;
+    public Produto getProduto() {
+        return produto;
     }
-    public void setProdutoId(Produto produtoId) {
-        this.produtoId = produtoId;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
     public Integer getQuantidade() {
         return quantidade;

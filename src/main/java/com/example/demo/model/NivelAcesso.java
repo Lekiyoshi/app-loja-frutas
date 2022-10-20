@@ -18,7 +18,7 @@ public class NivelAcesso implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
-    @OneToMany(mappedBy = "nivelAcessoId")
+    @OneToMany(mappedBy = "nivelAcesso")
     private Set<Usuario> usuarios;
     
     // Getters e Setters

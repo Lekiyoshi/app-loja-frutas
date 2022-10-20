@@ -1,0 +1,13 @@
+table {
+  table-layout: fixed;
+}
+
+th, td {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+input, select {
+  width: 180px;
+}

@@ -11,6 +11,9 @@
         rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
         crossorigin="anonymous">
+  <link th:href="@{/styles/styles.css}"
+        rel="stylesheet" />
+
 </head>
 
 <body>
@@ -21,13 +24,23 @@
   </div>
   
   <table class="table table-striped">
+    <colgroup>
+      <col span="1" style="width: 6%;" />
+      <col span="1" style="width: 12%;" />
+      <col span="1" style="width: 10%;" />
+      <col span="1" style="width: 10%;" />
+      <col span="1" style="width: 10%;" />
+      <col span="1" style="width: 12%;" />
+      <col span="1" style="width: 10%;" />
+      <col span="1" style="width: 10%;" />
+      <col span="1" style="width: 20%;" />
+    </colgroup>
     <thead>
       <tr>
         <th>Código</th>
         <th>Nome</th>
-        <th>Conta</th>
-        <th>Rg</th>
-        <th>Cpf</th>
+        <th>RG</th>
+        <th>CPF</th>
         <th>Data de Nascimento</th>
         <th>Empresa</th>
         <th>Nível de Acesso</th>
@@ -39,12 +52,11 @@
       <tr th:each="usr : ${listaUsuarios}">
         <td th:text="${usr.id}"></td>
         <td th:text="${usr.nome}"></td>
-        <td th:text="${usr.conta}"></td>
         <td th:text="${usr.rg}"></td>
         <td th:text="${usr.cpf}"></td>
         <td th:text="${#dates.format(usr.dataNascimento, 'dd/MM/yyyy')}"></td>
-        <td th:text="${usr.empresaId.nome}"></td>
-        <td th:text="${usr.nivelAcessoId.nome}"></td>
+        <td th:text="${usr.empresa.nome}"></td>
+        <td th:text="${usr.nivelAcesso.nome}"></td>
         <td th:text="${usr.email}"></td>
         <td>
           <a th:href="@{/alterarUsuario/{id}(id=${usr.id})}" class="btn btn-info">Alterar</a>
@@ -57,6 +69,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
           crossorigin="anonymous"></script>
+
 </body>
 
 </html>

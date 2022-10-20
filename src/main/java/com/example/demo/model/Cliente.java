@@ -1,12 +1,14 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity @Table(name = "cliente")
@@ -28,6 +30,8 @@ public class Cliente implements Serializable {
     private String uf;
     @Column(name = "tipo_cliente")
     private Integer tipoCliente;
+    @OneToMany(mappedBy = "cliente")
+    private Set<Venda> vendas;
     
     // Construtores
     public Cliente() {
@@ -115,6 +119,12 @@ public class Cliente implements Serializable {
     }
     public void setTipoCliente(Integer tipoCliente) {
         this.tipoCliente = tipoCliente;
+    }
+    public Set<Venda> getVendas() {
+        return vendas;
+    }
+    public void setVendas(Set<Venda> vendas) {
+        this.vendas = vendas;
     }
     
 }

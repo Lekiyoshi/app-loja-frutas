@@ -24,9 +24,9 @@ public class Usuario implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne @JoinColumn(name = "empresa_id", referencedColumnName = "id")
-    private Empresa empresaId;
+    private Empresa empresa;
     @ManyToOne @JoinColumn(name = "nivel_acesso_id", referencedColumnName = "id")
-    private NivelAcesso nivelAcessoId;
+    private NivelAcesso nivelAcesso;
     private String nome;
     private String conta;
     private String senha;
@@ -45,17 +45,17 @@ public class Usuario implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-    public Empresa getEmpresaId() {
-        return empresaId;
+    public Empresa getEmpresa() {
+        return empresa;
     }
-    public void setEmpresaId(Empresa empresaId) {
-        this.empresaId = empresaId;
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
-    public NivelAcesso getNivelAcessoId() {
-        return nivelAcessoId;
+    public NivelAcesso getNivelAcesso() {
+        return nivelAcesso;
     }
-    public void setNivelAcessoId(NivelAcesso nivelAcessoId) {
-        this.nivelAcessoId = nivelAcessoId;
+    public void setNivelAcesso(NivelAcesso nivelAcesso) {
+        this.nivelAcesso = nivelAcesso;
     }
     public String getNome() {
         return nome;

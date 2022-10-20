@@ -19,7 +19,7 @@ public class ClientePessoaJuridica implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @OneToOne @JoinColumn(name = "cliente_id", referencedColumnName = "id")
-    private Cliente clienteId;
+    private Cliente cliente;
     private String cnpj;
     @Column(name = "inscricao_estadual")
     private String inscricaoEstadual;
@@ -32,11 +32,11 @@ public class ClientePessoaJuridica implements Serializable {
     public ClientePessoaJuridica() {
         super();
     }
-    public ClientePessoaJuridica(Integer id, Cliente clienteId, String cnpj, String inscricaoEstadual,
+    public ClientePessoaJuridica(Integer id, Cliente cliente, String cnpj, String inscricaoEstadual,
             String proprietario, String representante, String ramoAtividade) {
         super();
         this.id = id;
-        this.clienteId = clienteId;
+        this.cliente = cliente;
         this.cnpj = cnpj;
         this.inscricaoEstadual = inscricaoEstadual;
         this.proprietario = proprietario;
@@ -51,11 +51,11 @@ public class ClientePessoaJuridica implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-    public Cliente getClienteId() {
-        return clienteId;
+    public Cliente getCliente() {
+        return cliente;
     }
-    public void setClienteId(Cliente clienteId) {
-        this.clienteId = clienteId;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
     public String getCnpj() {
         return cnpj;

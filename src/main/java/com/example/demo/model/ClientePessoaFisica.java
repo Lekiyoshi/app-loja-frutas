@@ -24,7 +24,7 @@ public class ClientePessoaFisica implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @OneToOne @JoinColumn(name = "cliente_id", referencedColumnName = "id")
-    private Cliente clienteId;
+    private Cliente cliente;
     private String rg;
     private String cpf;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -35,10 +35,10 @@ public class ClientePessoaFisica implements Serializable {
     public ClientePessoaFisica() {
         super();
     }
-    public ClientePessoaFisica(Integer id, Cliente clienteId, String rg, String cpf, Calendar dataNascimento) {
+    public ClientePessoaFisica(Integer id, Cliente cliente, String rg, String cpf, Calendar dataNascimento) {
         super();
         this.id = id;
-        this.clienteId = clienteId;
+        this.cliente = cliente;
         this.rg = rg;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
@@ -51,11 +51,11 @@ public class ClientePessoaFisica implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-    public Cliente getClienteId() {
-        return clienteId;
+    public Cliente getCliente() {
+        return cliente;
     }
-    public void setClienteId(Cliente clienteId) {
-        this.clienteId = clienteId;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
     public String getRg() {
         return rg;

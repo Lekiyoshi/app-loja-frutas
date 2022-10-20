@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -49,6 +50,7 @@ public class ClienteController {
     }
     
     // Salvar (Criar ou Atualizar)
+    @Transactional
     @PostMapping("/salvarCliente")
     public String salvar(@ModelAttribute("cliente") ClienteDTO clienteDto, Model modelo) {
         // Mapear de ClienteDTO para Cliente
@@ -69,6 +71,7 @@ public class ClienteController {
         
         if (cliente.getId() == null) {
             // Obter o id do Cliente, se ainda não é conhecido
+            cliente.setId(clienteRepo.obterMaxId().get(0));
         }
         
         if (clienteDto.getTipoCliente() == 0) {  // Se pessoa física
@@ -112,7 +115,7 @@ public class ClienteController {
                 .findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Este cliente (pessoa física) não existe: " + id));
         
-        Integer clienteId = clientePessoaFisica.getClienteId().getId();
+        Integer clienteId = clientePessoaFisica.getCliente().getId();
         
         Cliente cliente = clienteRepo
                 .findById(clienteId)
@@ -148,7 +151,7 @@ public class ClienteController {
                 .findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Este cliente (pessoa jurídica) não existe: " + id));
         
-        Integer clienteId = clientePessoaJuridica.getClienteId().getId();
+        Integer clienteId = clientePessoaJuridica.getCliente().getId();
         
         Cliente cliente = clienteRepo
                 .findById(clienteId)
@@ -186,7 +189,7 @@ public class ClienteController {
                 .findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Este cliente (pessoa física) não existe: " + id));
         
-        Integer clienteId = clientePessoaFisica.getClienteId().getId();
+        Integer clienteId = clientePessoaFisica.getCliente().getId();
         
         Cliente cliente = clienteRepo
                 .findById(clienteId)
@@ -206,7 +209,7 @@ public class ClienteController {
                 .findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Este cliente (pessoa jurídica) não existe: " + id));
         
-        Integer clienteId = clientePessoaJuridica.getClienteId().getId();
+        Integer clienteId = clientePessoaJuridica.getCliente().getId();
         
         Cliente cliente = clienteRepo
                 .findById(clienteId)

@@ -10,7 +10,10 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
         rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
-        crossorigin="anonymous">
+        crossorigin="anonymous" />
+  <link th:href="@{/styles/styles.css}"
+        rel="stylesheet" />
+
 </head>
 
 <body>
@@ -22,13 +25,22 @@
   
   <h3>Clientes (Pessoa Física)</h3>
   
-  <table class="table table-striped">
+  <table class="table table-striped" style="table-layout: fixed;">
+    <colgroup>
+      <col span="1" style="width: 6%;" />
+      <col span="1" style="width: 16%;" />
+      <col span="1" style="width: 12%;" />
+      <col span="1" style="width: 12%;" />
+      <col span="1" style="width: 12%;" />
+      <col span="1" style="width: 12%;" />
+      <col span="1" style="width: 30%;" />
+    </colgroup>
     <thead>
       <tr>
         <th>Código</th>
         <th>Nome</th>
-        <th>Rg</th>
-        <th>Cpf</th>
+        <th>RG</th>
+        <th>CPF</th>
         <th>Data de Nascimento</th>
         <th>Contato</th>
         <th>Opções</th>
@@ -37,11 +49,11 @@
     <tbody>
       <tr th:each="clpf : ${listaClientesPessoaFisica}">
         <td th:text="${clpf.id}"></td>
-        <td th:text="${clpf.clienteId.nome}"></td>
+        <td th:text="${clpf.cliente.nome}"></td>
         <td th:text="${clpf.rg}"></td>
         <td th:text="${clpf.cpf}"></td>
         <td th:text="${#dates.format(clpf.dataNascimento, 'dd/MM/yyyy')}"></td>
-        <td th:text="${clpf.clienteId.email}"></td>
+        <td th:text="${clpf.cliente.email}"></td>
         <td>
           <a th:href="@{/alterarClientePessoaFisica/{id}(id=${clpf.id})}" class="btn btn-info">Alterar</a>
           <a th:href="@{/deletarClientePessoaFisica/{id}(id=${clpf.id})}" class="btn btn-danger">Deletar</a>
@@ -53,11 +65,19 @@
   <h3>Clientes (Pessoa Jurídica)</h3>
   
   <table class="table table-striped">
+    <colgroup>
+      <col span="1" style="width: 6%;" />
+      <col span="1" style="width: 16%;" />
+      <col span="1" style="width: 12%;" />
+      <col span="1" style="width: 24%;" />
+      <col span="1" style="width: 12%;" />
+      <col span="1" style="width: 30%;" />
+    </colgroup>
     <thead>
       <tr>
         <th>Código</th>
         <th>Nome</th>
-        <th>Cnpj</th>
+        <th>CNPJ</th>
         <th>Proprietário</th>
         <th>Contato</th>
         <th>Opções</th>
@@ -66,10 +86,10 @@
     <tbody>
       <tr th:each="clpj : ${listaClientesPessoaJuridica}">
         <td th:text="${clpj.id}"></td>
-        <td th:text="${clpj.clienteId.nome}"></td>
+        <td th:text="${clpj.cliente.nome}"></td>
         <td th:text="${clpj.cnpj}"></td>
         <td th:text="${clpj.proprietario}"></td>
-        <td th:text="${clpj.clienteId.email}"></td>
+        <td th:text="${clpj.cliente.email}"></td>
         <td>
           <a th:href="@{/alterarClientePessoaJuridica/{id}(id=${clpj.id})}" class="btn btn-info">Alterar</a>
           <a th:href="@{/deletarClientePessoaJuridica/{id}(id=${clpj.id})}" class="btn btn-danger">Deletar</a>
@@ -81,6 +101,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
           crossorigin="anonymous"></script>
+
 </body>
 
 </html>

@@ -31,8 +31,10 @@ public class Empresa implements Serializable {
     private String bairro;
     private String cidade;
     private String uf;
-    @OneToMany(mappedBy = "empresaId")
+    @OneToMany(mappedBy = "empresa")
     private Set<Usuario> usuarios;
+    @OneToMany(mappedBy = "empresa")
+    private Set<Produto> produtos;
     
     // Getters e Setters
     public Integer getId() {
@@ -118,6 +120,12 @@ public class Empresa implements Serializable {
     }
     public void setUsuarios(Set<Usuario> usuarios) {
         this.usuarios = usuarios;
+    }
+    public Set<Produto> getProdutos() {
+        return produtos;
+    }
+    public void setProdutos(Set<Produto> produtos) {
+        this.produtos = produtos;
     }
     
 }
